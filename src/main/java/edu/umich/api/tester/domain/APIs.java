@@ -7,4 +7,11 @@ import lombok.Data;
 public class APIs {
 
     private List<API> apis;
+
+    public APIs() {
+    }
+
+    public APIs(List<API> apis) {
+        this.apis = apis;
+    }
 }

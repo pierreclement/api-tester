@@ -1,5 +1,6 @@
 package edu.umich.api.tester;
 
+import edu.umich.api.tester.domain.APIs;
 import javax.annotation.PostConstruct;
 import lombok.Data;
 import org.slf4j.Logger;
@@ -8,11 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @Data
-@EnableJpaRepositories
 public class ApplicationConfiguration {
 
     @Value("${frequency}")
