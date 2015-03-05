@@ -1,0 +1,26 @@
+endpoints:
+    enabled: false
+logging:
+    level:
+        edu.umich.api.tester: DEBUG
+        org.springframework.web: DEBUG
+        org.hibernate: ERROR
+    file: api-tester.log
+management:
+    security:
+        role: SUPERUSER
+    port: 8081
+security:
+    user:
+        name: admin
+        password: secret
+server:
+    port: 8080
+somekey:
+    somevaluea: value
+spring:
+    data:
+        mongodb:
+            uri: mongodb://localhost/test
+            host: localhost
+            port: 27017
