@@ -1,5 +1,6 @@
 package edu.umich.api.tester.service;
 
+import com.google.common.collect.Lists;
 import edu.umich.api.tester.domain.API;
 import edu.umich.api.tester.domain.APIRepository;
 import java.util.List;
@@ -18,7 +19,9 @@ public class APIService {
 
     @Transactional(readOnly = true)
     public List<API> getAPIs() {
-        logger.error("hello");
-        return null;
+        Iterable<API> apiIterator = repo.findAll();
+        List<API> apis = Lists.newArrayList(apiIterator);
+        logger.info("found " + apis.size() + " apis");
+        return apis;
     }
 }

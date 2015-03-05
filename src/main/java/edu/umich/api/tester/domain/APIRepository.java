@@ -1,9 +1,6 @@
 package edu.umich.api.tester.domain;
 
-import java.util.List;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface APIRepository extends Repository<API, Long> {
-
-    public List<API> findAll();
+public interface APIRepository extends CrudRepository<API, Long> {
 }

@@ -17,10 +17,11 @@ security:
 server:
     port: 8080
 somekey:
-    somevaluea: value
+    frequency: 1
 spring:
-    data:
+    datasource:
         mongodb:
-            uri: mongodb://localhost/test
-            host: localhost
-            port: 27017
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://localhost/test
+            username: dbuser
+            password: dbpass

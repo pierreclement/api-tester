@@ -2,6 +2,7 @@ package edu.umich.api.tester.web;
 
 import edu.umich.api.tester.domain.API;
 import edu.umich.api.tester.service.APIService;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-/**
- * http://localhost:8081/autoconfig
- * http://localhost:8081/health
- * http://localhost:8081/metrics
- * http://localhost:8081/trace
- */
 
 @RestController
 @RequestMapping(value = "/apis")
@@ -37,7 +31,9 @@ public class APIsMvcController {
 
     @RequestMapping(value = "/{id}")
     public ResponseEntity<APIsResource> findById(@RequestBody @PathVariable Long id) {
-        ResponseEntity<APIsResource> response = new ResponseEntity<>(null, HttpStatus.OK);
+        List<API> apis = service.getAPIs();
+        APIsResource resource = assembler.toResource(apis);
+        ResponseEntity<APIsResource> response = new ResponseEntity<>(resource, HttpStatus.OK);
         return response;
     }
 }

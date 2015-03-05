@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@Data
 @Configuration
+@Data
+@EnableJpaRepositories
 public class ApplicationConfiguration {
 
-    @Value("${somekey.somevaluea}")
-    private String somevaluea;
+    @Value("${frequency}")
+    private String frequency;
 
     private Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
     @Autowired
@@ -22,6 +24,6 @@ public class ApplicationConfiguration {
 
     @PostConstruct
     private void log() {
-        logger.debug("somevaluea - " + this.somevaluea);
+        logger.debug("frequency - " + this.frequency);
     }
 }

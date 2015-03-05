@@ -19,10 +19,12 @@ public class Application implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-        //System.exit(0);
+        System.exit(0);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        logger.info("starting first run");
+        
     }
 }
