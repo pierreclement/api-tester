@@ -14,15 +14,7 @@ public class API implements Serializable {
     private List<Resource> resources;
 
     public API() {
-    	setResources(new ArrayList<Resource>());
+    	resources = new ArrayList<Resource>();
     }
 
-	public List<Resource> getResources() {
-		return resources;
-	}
-
-	public void setResources(List<Resource> resources) {
-		this.resources = resources;
-	}
-    
 }

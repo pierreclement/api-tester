@@ -14,14 +14,5 @@ public class APIs {
     public APIs(List<API> apis) {
         this.setApis(apis);
     }
-
-	public List<API> getApis() {
-		return apis;
-	}
-
-	public void setApis(List<API> apis) {
-		this.apis = apis;
-	}
-    
     
 }

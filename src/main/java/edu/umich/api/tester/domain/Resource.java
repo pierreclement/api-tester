@@ -4,15 +4,11 @@ import java.net.URI;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
+@Data
 public class Resource {
 	@NotNull
 	private URI url;
-
-	public URI getUrl() {
-		return url;
-	}
-
-	public void setUrl(URI url) {
-		this.url = url;
-	}
+	
 }
