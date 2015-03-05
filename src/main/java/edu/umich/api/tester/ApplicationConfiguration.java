@@ -1,5 +1,6 @@
 package edu.umich.api.tester;
 
+import edu.umich.api.tester.domain.APIs;
 import javax.annotation.PostConstruct;
 import lombok.Data;
 import org.slf4j.Logger;
