@@ -12,6 +12,11 @@ public class APIRequest implements Serializable {
     private List<EndpointRequest> endpointRequests;
 
     public APIRequest() {
-    	endpointRequests = new ArrayList<>();
+        endpointRequests = new ArrayList<>();
+    }
+
+    public APIRequest(String name) {
+        this.name = name;
+        endpointRequests = new ArrayList<>();
     }
 }

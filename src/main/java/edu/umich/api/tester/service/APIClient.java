@@ -25,8 +25,13 @@ public class APIClient {
     private APIResponse assemble(APIRequest apiRequest) {
         APIResponse apiResponse = new APIResponse();
         apiResponse.setName(apiRequest.getName());
-        apiResponse.setStatusCode(200);
-        apiResponse.setStatusMessage("OK");
+        if (apiResponse.getName().equals("Cookies")) {
+            apiResponse.setStatusCode(301);
+            apiResponse.setStatusMessage("Moved Permanently. Cookies are all gone. Come back tomorrow.");
+        } else {
+            apiResponse.setStatusCode(200);
+            apiResponse.setStatusMessage("OK");
+        }
         apiResponse.setEndpointResponses(new ArrayList<>());
         apiRequest.getEndpointRequests().stream().forEach((endpointRequest) -> {
             apiResponse.getEndpointResponses().add(assemble(endpointRequest));
@@ -35,6 +40,7 @@ public class APIClient {
     }
 
     private EndpointResponse assemble(EndpointRequest endpointRequest) {
+        System.err.println("yikes");
         EndpointResponse response = new EndpointResponse();
         response.setRawRequest(endpointRequest.getFullRequest());
         response.setRawResponse("hello");
