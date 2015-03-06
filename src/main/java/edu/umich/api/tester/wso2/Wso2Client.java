@@ -2,7 +2,6 @@ package edu.umich.api.tester.wso2;
 
 import java.security.GeneralSecurityException;
 
-import org.apache.log4j.Logger;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,10 +12,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import edu.umich.api.tester.domain.Resource;
+import org.slf4j.LoggerFactory;
 
 public class Wso2Client {
 	
-    public static final Logger logger = Logger.getLogger(Wso2Client.class);
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
     private Wso2Credentials credentials;
 
@@ -84,7 +84,7 @@ public class Wso2Client {
             getCredentials().setWso2Token(fetchToken());
         }
 
-        return getCredentials().getWso2Token().getAcessToken();
+        return getCredentials().getWso2Token().getAccessToken();
     }
 
     /**

@@ -20,6 +20,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A static class used to help connect to wso2. It builds the ssl connection for
@@ -29,6 +31,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jbouffor
  */
 public class Wso2ClientHelper {
+
+    private static final Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
     /**
      * Default private constructor to over load the default public constructor.

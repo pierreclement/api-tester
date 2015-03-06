@@ -1,6 +1,6 @@
 package edu.umich.api.tester;
 
-import edu.umich.api.tester.domain.APIs;
+import edu.umich.api.tester.domain.APIResponses;
 import edu.umich.api.tester.service.APITesterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,28 +9,31 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @ComponentScan
 @EnableAutoConfiguration
+@EnableScheduling
 public class Application implements CommandLineRunner {
 
     @Autowired
     private APITesterService service;
-    private Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
-    
+    private static final Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        logger.info("starting first run");
-        APIs apis = service.invokeAll();
-        if (apis == null || apis.getApis().isEmpty()) {
-            logger.warn("invoked 0 apis");
-        } else {
-            logger.info("invoked " + apis.getApis().size() + " apis");
-        }
+    public void run(String... strings) throws Exception {
+    }
+
+    @Scheduled(fixedDelay = 10000)
+    public void onScheduleInvokeAllAPIRequests() throws Exception {
+        logger.info("starting run");
+        APIResponses apis = service.invokeAllAPIRequests();
+        service.report(apis);
+        logger.info("ended run");
     }
 }

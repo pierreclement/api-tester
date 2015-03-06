@@ -6,11 +6,11 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class API implements Serializable {
+public class APIRequest implements Serializable {
 
     private List<Resource> resources;
 
-    public API() {
-    	resources = new ArrayList<Resource>();
+    public APIRequest() {
+    	resources = new ArrayList<>();
     }
 }

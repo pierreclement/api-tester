@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 public class RestConfiguration extends WebMvcConfigurerAdapter {
 
-    private Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
+    private static final Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
@@ -27,5 +27,4 @@ public class RestConfiguration extends WebMvcConfigurerAdapter {
                 defaultContentType(MediaType.APPLICATION_XML).
                 replaceMediaTypes(mediatypes);
     }
-
 }
