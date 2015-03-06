@@ -1,6 +1,5 @@
 package edu.umich.api.tester.domain;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,27 +18,29 @@ public class APIRequestRepository {
 
         APIRequest api = new APIRequest("Buildings");
         apis.add(api);
-        api.setEndpointRequests(new ArrayList<>());
         EndpointRequest request = new EndpointRequest();
         api.getEndpointRequests().add(request);
         request.setDate(new Date());
         request.setExpectedResponse("OK");
         request.setFullRequest("https://example.com/Buildings");
-        request.setTestCases(new ArrayList<>());
         request.setUrl("https://example.com/Buildings");
         request.setVerb("GET");
+        TestCaseRequest tcRequest = new TestCaseRequest();
+        tcRequest.setTestCondition("is available");
+        request.getTestCaseRequests().add(tcRequest);
 
         api = new APIRequest("Cookies");
         apis.add(api);
-        api.setEndpointRequests(new ArrayList<>());
         request = new EndpointRequest();
         api.getEndpointRequests().add(request);
         request.setDate(new Date());
         request.setExpectedResponse("OK");
         request.setFullRequest("https://example.com/Cookies");
-        request.setTestCases(new ArrayList<>());
         request.setUrl("https://example.com/Cookies");
         request.setVerb("GET");
+        tcRequest = new TestCaseRequest();
+        tcRequest.setTestCondition("is available");
+        request.getTestCaseRequests().add(tcRequest);
 
         return apis;
     }

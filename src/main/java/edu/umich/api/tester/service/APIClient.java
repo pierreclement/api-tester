@@ -4,7 +4,8 @@ import edu.umich.api.tester.domain.APIRequest;
 import edu.umich.api.tester.domain.APIResponse;
 import edu.umich.api.tester.domain.EndpointRequest;
 import edu.umich.api.tester.domain.EndpointResponse;
-import java.util.ArrayList;
+import edu.umich.api.tester.domain.TestCaseRequest;
+import edu.umich.api.tester.domain.TestCaseResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,6 @@ public class APIClient {
             apiResponse.setStatusCode(200);
             apiResponse.setStatusMessage("OK");
         }
-        apiResponse.setEndpointResponses(new ArrayList<>());
         apiRequest.getEndpointRequests().stream().forEach((endpointRequest) -> {
             apiResponse.getEndpointResponses().add(assemble(endpointRequest));
         });
@@ -40,11 +40,22 @@ public class APIClient {
     }
 
     private EndpointResponse assemble(EndpointRequest endpointRequest) {
-        System.err.println("yikes");
         EndpointResponse response = new EndpointResponse();
+        response.setDate(endpointRequest.getDate());
         response.setRawRequest(endpointRequest.getFullRequest());
         response.setRawResponse("hello");
         response.setUrl(endpointRequest.getUrl());
+        endpointRequest.getTestCaseRequests().stream().map((tc) -> assemble(tc)).forEach((tcResponse) -> {
+            response.getTestCaseResponses().add(tcResponse);
+        });
         return response;
+    }
+    
+    private TestCaseResponse assemble(TestCaseRequest tcRequest) {
+        TestCaseResponse tcResponse = new TestCaseResponse();
+        tcResponse.setDetails("not sure what to say, it passes...");
+        tcResponse.setSuccess(true);
+        tcResponse.setTestCondition(tcRequest.getTestCondition());
+        return tcResponse;
     }
 }

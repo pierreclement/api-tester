@@ -13,13 +13,19 @@ public class APIResponses implements Serializable {
     private List<APIResponse> apiResponses;
 
     public APIResponses() {
-    	apiResponses = new ArrayList<>();
     }
 
     public void add(APIResponse apiResponse) {
-        if (apiResponses==null) {
+        if (apiResponses == null) {
             apiResponses = new ArrayList<>();
         }
         apiResponses.add(apiResponse);
+    }
+
+    public List<APIResponse> getApiResponses() {
+        if (apiResponses == null) {
+            apiResponses = new ArrayList<>();
+        }
+        return apiResponses;
     }
 }

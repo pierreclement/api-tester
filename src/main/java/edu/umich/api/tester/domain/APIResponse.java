@@ -15,7 +15,10 @@ public class APIResponse implements Serializable {
     @JsonProperty("endpointResponse")
     private List<EndpointResponse> endpointResponses;
 
-    public APIResponse() {
-        endpointResponses = new ArrayList<>();
+    public List<EndpointResponse> getEndpointResponses() {
+        if (endpointResponses == null) {
+            endpointResponses = new ArrayList<>();
+        }
+        return endpointResponses;
     }
 }
