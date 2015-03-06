@@ -1,8 +1,8 @@
 logging:
     level:
         edu.umich.api.tester: INFO
-        org.springframework.web: INFO
-        org.hibernate: INFO
+        org.springframework.web: WARN
+        org.hibernate: WARN
     file: api-tester.log
 server:
     port: 8080

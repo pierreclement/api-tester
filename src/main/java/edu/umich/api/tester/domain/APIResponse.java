@@ -9,8 +9,10 @@ import lombok.Data;
 public class APIResponse implements Serializable {
 
     private List<Resource> resources;
+    private int statusCode;
+    private String statusMessage;
 
     public APIResponse() {
-    	resources = new ArrayList<>();
+        resources = new ArrayList<>();
     }
 }

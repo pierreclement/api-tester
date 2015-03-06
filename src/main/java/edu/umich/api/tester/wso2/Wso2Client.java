@@ -12,16 +12,16 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import edu.umich.api.tester.domain.Resource;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Wso2Client {
-	
-    private static final org.slf4j.Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
     private Wso2Credentials credentials;
+    private static final Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
     public ResponseEntity<String> consumeResource(Resource res) {
-    	ResponseEntity<String> response = null;
+        ResponseEntity<String> response = null;
         try {
             HttpComponentsClientHttpRequestFactory client = new HttpComponentsClientHttpRequestFactory();
             client.setHttpClient(Wso2ClientHelper.buildSSLClient(getCredentials().getTrustStore()));
@@ -46,8 +46,9 @@ public class Wso2Client {
     /**
      * fetches the access token for wso2. It uses the wso2 provide customer and
      * secret to retrieve the access token.
+     *
      * @return a Wso2Token the has the access token, type and expire
-     *         information.
+     * information.
      */
     public Wso2Token fetchToken() {
         Wso2Token token = null;
@@ -77,6 +78,7 @@ public class Wso2Client {
      * Gets an access token. if the token is null it gets a new one. This
      * function needs to be enhanced. To include checking if the token is
      * expired.
+     *
      * @return an Access Token
      */
     public String getAcessToken() {
@@ -89,6 +91,7 @@ public class Wso2Client {
 
     /**
      * The wso2Credentials.
+     *
      * @return the wso2Credentials.
      */
     public Wso2Credentials getCredentials() {
@@ -97,6 +100,7 @@ public class Wso2Client {
 
     /**
      * Sets the wso2 credentials.
+     *
      * @param credentials the credentials to set.
      */
     public void setCredentials(final Wso2Credentials credentials) {

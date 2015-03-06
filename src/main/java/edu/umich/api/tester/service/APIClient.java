@@ -13,7 +13,16 @@ public class APIClient {
 
     //@Autowired
     //private RestTemplate restTemplate;
-    public APIResponse invoke(APIRequest api) {
-        return null;
+    public APIResponse invoke(APIRequest apiRequest) {
+        APIResponse apiResponse = assemble(apiRequest);
+        //restTemplate...
+        return apiResponse;
+    }
+    
+    private APIResponse assemble(APIRequest apiRequest) {
+         APIResponse apiResponse  = new APIResponse();
+         apiResponse.setStatusCode(200);
+         apiResponse.setStatusMessage("OK");
+         return apiResponse;
     }
 }

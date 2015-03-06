@@ -4,7 +4,6 @@ import edu.umich.api.tester.domain.APIRequestRepository;
 import edu.umich.api.tester.domain.APIRequests;
 import edu.umich.api.tester.domain.APIResponse;
 import edu.umich.api.tester.domain.APIResponses;
-import edu.umich.api.tester.domain.APIs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

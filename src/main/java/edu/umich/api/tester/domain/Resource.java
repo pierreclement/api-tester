@@ -10,4 +10,6 @@ public class Resource {
 
     @NotNull
     private URI url;
+    @NotNull
+    private String context;
 }
