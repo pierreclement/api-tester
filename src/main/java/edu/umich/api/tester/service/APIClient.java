@@ -43,7 +43,6 @@ public class APIClient {
         EndpointResponse response = new EndpointResponse();
         response.setDate(endpointRequest.getDate());
         response.setRawRequest(endpointRequest.getFullRequest());
-        response.setRawResponse("hello");
         response.setUrl(endpointRequest.getUrl());
         endpointRequest.getTestCaseRequests().stream().map((tc) -> assemble(tc)).forEach((tcResponse) -> {
             response.getTestCaseResponses().add(tcResponse);
@@ -53,7 +52,11 @@ public class APIClient {
     
     private TestCaseResponse assemble(TestCaseRequest tcRequest) {
         TestCaseResponse tcResponse = new TestCaseResponse();
-        tcResponse.setDetails("not sure what to say, it passes...");
+        if (tcRequest.getTestCondition().equals("response=<Entries xmlns=\"http://ws.wso2.org/dataservice\"><Entry><Hello xmlns=\"http://ws.wso2.org/dataservice\">Hello World!</Hello></Entry></Entries>")) {
+            tcResponse.setDetails("service gives us greetings.");
+        } else {
+            tcResponse.setDetails("service is available.");
+        }
         tcResponse.setSuccess(true);
         tcResponse.setTestCondition(tcRequest.getTestCondition());
         return tcResponse;

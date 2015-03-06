@@ -33,7 +33,7 @@ public class Wso2Client {
 
             HttpHeaders headers = new HttpHeaders();
             headers.set("Authorization", "Bearer " + bearer);
-            HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+            HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
             response = template.exchange(res.getUrl(), HttpMethod.GET, entity, String.class);
         } catch (GeneralSecurityException e) {
@@ -60,11 +60,11 @@ public class Wso2Client {
             HttpHeaders headers = new HttpHeaders();
             headers.set("Authorization", "Basic " + Wso2ClientHelper.getKey(getCredentials()));
 
-            MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
+            MultiValueMap<String, String> form = new LinkedMultiValueMap<>();
             form.add("scope", "PRODUCTION");
             form.add("grant_type", "client_credentials");
 
-            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(form, headers);
+            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(form, headers);
 
             token = template.postForObject(getCredentials().getTokenUrl(), request, Wso2Token.class);
         } catch (GeneralSecurityException e) {

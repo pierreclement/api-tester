@@ -42,6 +42,22 @@ public class APIRequestRepository {
         tcRequest.setTestCondition("is available");
         request.getTestCaseRequests().add(tcRequest);
 
+        api = new APIRequest("Hello World");
+        apis.add(api);
+        request = new EndpointRequest();
+        api.getEndpointRequests().add(request);
+        request.setDate(new Date());
+        request.setExpectedResponse("OK");
+        request.setFullRequest("https://api-qa-gw.its.umich.edu/HelloWorld/v1/oHelloWorld");
+        request.setUrl("https://api-qa-gw.its.umich.edu/HelloWorld/v1/oHelloWorld");
+        request.setVerb("GET");
+        tcRequest = new TestCaseRequest();
+        tcRequest.setTestCondition("is available");
+        request.getTestCaseRequests().add(tcRequest);
+        tcRequest = new TestCaseRequest();
+        tcRequest.setTestCondition("response=<Entries xmlns=\"http://ws.wso2.org/dataservice\"><Entry><Hello xmlns=\"http://ws.wso2.org/dataservice\">Hello World!</Hello></Entry></Entries>");
+        request.getTestCaseRequests().add(tcRequest);
+
         return apis;
     }
 }
