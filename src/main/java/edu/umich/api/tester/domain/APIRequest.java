@@ -8,9 +8,10 @@ import lombok.Data;
 @Data
 public class APIRequest implements Serializable {
 
-    private List<Resource> resources;
+    private String name;
+    private List<EndpointRequest> endpointRequests;
 
     public APIRequest() {
-    	resources = new ArrayList<>();
+    	endpointRequests = new ArrayList<>();
     }
 }

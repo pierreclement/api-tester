@@ -29,8 +29,12 @@ public class Application implements CommandLineRunner {
     public void run(String... strings) throws Exception {
     }
 
-    @Scheduled(fixedDelay = 10000)
-    public void onScheduleInvokeAllAPIRequests() throws Exception {
+    /**
+     * will run once every 1000000000 ms until we figure out what to do with the
+     * cached results
+     */
+    @Scheduled(fixedDelay = 1000000000)
+    public void onScheduleInvokeAllAPIRequests() {
         logger.info("starting run");
         APIResponses apis = service.invokeAllAPIRequests();
         service.report(apis);

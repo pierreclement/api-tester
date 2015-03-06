@@ -11,7 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import edu.umich.api.tester.domain.Resource;
+import edu.umich.api.tester.domain.EndpointRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class Wso2Client {
     private Wso2Credentials credentials;
     private static final Logger logger = LoggerFactory.getLogger("edu.umich.api.tester");
 
-    public ResponseEntity<String> consumeResource(Resource res) {
+    public ResponseEntity<String> consumeResource(EndpointRequest res) {
         ResponseEntity<String> response = null;
         try {
             HttpComponentsClientHttpRequestFactory client = new HttpComponentsClientHttpRequestFactory();

@@ -8,11 +8,12 @@ import lombok.Data;
 @Data
 public class APIResponse implements Serializable {
 
-    private List<Resource> resources;
+    private String name;
     private int statusCode;
     private String statusMessage;
+    private List<EndpointResponse> endpointResponses;
 
     public APIResponse() {
-        resources = new ArrayList<>();
+        endpointResponses = new ArrayList<>();
     }
 }

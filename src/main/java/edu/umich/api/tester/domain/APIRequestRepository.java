@@ -15,8 +15,8 @@ public class APIRequestRepository {
     public List<APIRequest> findAll() {
         List<APIRequest> apis = new ArrayList<>();
         APIRequest api = new APIRequest();
-        List<Resource> resources = new ArrayList<>();
-        api.setResources(resources);
+        List<EndpointRequest> endpointRequests = new ArrayList<>();
+        api.setEndpointRequests(endpointRequests);
         apis.add(api);
         return apis;
     }
